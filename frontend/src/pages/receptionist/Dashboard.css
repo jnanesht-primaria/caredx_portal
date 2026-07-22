@@ -1,0 +1,436 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap");
+
+.rcp-shell {
+  min-height: 100vh;
+  background: #eef3f1;
+  font-family: "Inter", sans-serif;
+  color: #142322;
+  padding: 1.75rem 2.5rem 3rem;
+}
+
+/* ---------- Header ---------- */
+.rcp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.rcp-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b9b8f;
+  margin: 0 0 0.2rem;
+}
+
+.rcp-header h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+.rcp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rcp-user {
+  text-align: right;
+}
+
+.rcp-user-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.rcp-user-role {
+  display: block;
+  font-size: 0.75rem;
+  color: #4c5f5c;
+}
+
+/* ---------- Toast ---------- */
+.rcp-toast {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #114b4e;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  box-shadow: 0 12px 24px -12px rgba(13, 43, 43, 0.4);
+  z-index: 50;
+}
+
+/* ---------- Stats ---------- */
+.rcp-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: #fff;
+  border: 1px solid #dbe4e1;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-card-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.stat-card-label {
+  font-size: 0.75rem;
+  color: #4c5f5c;
+}
+
+.stat-card--info .stat-card-value { color: #114b4e; }
+.stat-card--success .stat-card-value { color: #2f8f5b; }
+.stat-card--urgent { border-color: #e6b7ab; }
+.stat-card--urgent .stat-card-value { color: #a33b2c; }
+
+/* ---------- Toolbar ---------- */
+.rcp-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.rcp-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.rcp-date,
+.rcp-search {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #dbe4e1;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: "Inter", sans-serif;
+  background: #fff;
+}
+
+.rcp-search {
+  min-width: 220px;
+}
+
+.rcp-status-pills {
+  display: flex;
+  gap: 0.3rem;
+  background: #e4ece9;
+  padding: 0.25rem;
+  border-radius: 9px;
+}
+
+.rcp-pill {
+  border: none;
+  background: transparent;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4c5f5c;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.rcp-pill.is-active {
+  background: #114b4e;
+  color: #fff;
+}
+
+.rcp-toolbar-right {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn-secondary {
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #dbe4e1;
+  background: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #142322;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: #114b4e;
+}
+
+.rcp-book-btn {
+  padding: 0.55rem 1rem;
+  width: auto;
+  font-size: 0.85rem;
+}
+
+.rcp-error {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Table panel ---------- */
+.rcp-panel {
+  background: #fff;
+  border: 1px solid #dbe4e1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-empty {
+  padding: 2.5rem;
+  text-align: center;
+  color: #4c5f5c;
+  font-size: 0.9rem;
+}
+
+.appt-table-wrap {
+  overflow-x: auto;
+}
+
+.appt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.appt-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: #f5f8f6;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4c5f5c;
+  border-bottom: 1px solid #dbe4e1;
+}
+
+.appt-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #eef3f1;
+  vertical-align: middle;
+}
+
+.appt-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+}
+
+.muted {
+  color: #94a39f;
+  font-size: 0.8rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.badge--scheduled { background: #eef1fb; color: #3b4d9e; }
+.badge--checkedin { background: #fff4e0; color: #a3671b; }
+.badge--inprogress { background: #e6f1ef; color: #146b64; }
+.badge--completed { background: #e6f6ea; color: #2f8f5b; }
+.badge--cancelled { background: #f5eceb; color: #94433a; }
+.badge--urgent { background: #fbe9e7; color: #a33b2c; }
+
+.appt-actions {
+  display: flex;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.appt-action-btn {
+  border: 1px solid #dbe4e1;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #114b4e;
+  cursor: pointer;
+}
+
+.appt-action-btn:hover {
+  background: #114b4e;
+  color: #fff;
+  border-color: #114b4e;
+}
+
+/* ---------- Modals ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 43, 43, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.75rem;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 60px -20px rgba(13, 43, 43, 0.35);
+}
+
+.modal-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 1.2rem;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 0.9rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.modal-actions .cdx-submit {
+  width: auto;
+  padding: 0.6rem 1.1rem;
+}
+
+/* Reused field styles from Login.css, scoped locally in case Login.css isn't loaded */
+.cdx-field {
+  display: block;
+  margin-bottom: 1rem;
+}
+.cdx-field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.cdx-field input,
+.cdx-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #dbe4e1;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: "Inter", sans-serif;
+  background: #fbfcfb;
+}
+.cdx-field input:focus,
+.cdx-field select:focus {
+  outline: none;
+  border-color: #114b4e;
+  box-shadow: 0 0 0 3px rgba(17, 75, 78, 0.13);
+}
+.cdx-error {
+  background: #fbe9e7;
+  color: #a33b2c;
+  font-size: 0.82rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.cdx-submit {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: #114b4e;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.cdx-submit:hover:not(:disabled) { background: #0d2b2b; }
+.cdx-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Patient search results dropdown (BookAppointmentModal) */
+.patient-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #dbe4e1;
+  border-radius: 8px;
+  margin-top: 0.25rem;
+  max-height: 180px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0.3rem;
+  z-index: 10;
+  box-shadow: 0 12px 24px -12px rgba(13, 43, 43, 0.25);
+}
+
+.patient-results li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.patient-results li:hover {
+  background: #eef3f1;
+}
+
+.patient-results li span {
+  color: #4c5f5c;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .rcp-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .rcp-shell {
+    padding: 1.25rem;
+  }
+  .rcp-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap");
+
+:root {
+  --cdx-teal-900: #0d2b2b;
+  --cdx-teal-700: #114b4e;
+  --cdx-sage-500: #6b9b8f;
+  --cdx-bg: #eef3f1;
+  --cdx-card: #ffffff;
+  --cdx-ink: #142322;
+  --cdx-ink-soft: #4c5f5c;
+  --cdx-amber: #d98f3b;
+  --cdx-line: #dbe4e1;
+  --cdx-error-bg: #fbe9e7;
+  --cdx-error-ink: #a33b2c;
+}
+
+.cdx-screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background: var(--cdx-bg);
+  font-family: "Inter", sans-serif;
+  color: var(--cdx-ink);
+}
+
+/* ---------- Brand panel ---------- */
+.cdx-panel-brand {
+  position: relative;
+  background: radial-gradient(120% 140% at 10% 0%, var(--cdx-teal-700) 0%, var(--cdx-teal-900) 70%);
+  color: #eef6f4;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.cdx-brand-mark {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cdx-brand-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cdx-amber);
+  box-shadow: 0 0 0 4px rgba(217, 143, 59, 0.2);
+}
+
+.cdx-vitals {
+  width: 100%;
+  opacity: 0.9;
+}
+
+.cdx-vitals-svg {
+  width: 100%;
+  height: 90px;
+}
+
+.cdx-vitals-line {
+  stroke: var(--cdx-amber);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 620;
+  stroke-dashoffset: 620;
+  animation: cdx-draw 2.6s ease-out infinite;
+}
+
+@keyframes cdx-draw {
+  0% { stroke-dashoffset: 620; }
+  55% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -620; }
+}
+
+.cdx-brand-copy h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.15rem;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  max-width: 20ch;
+}
+
+.cdx-brand-copy p {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #cfe3de;
+  max-width: 38ch;
+  margin: 0;
+}
+
+.cdx-brand-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  color: #a9c6bf;
+}
+
+.cdx-brand-list li {
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.cdx-brand-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 6px;
+  height: 6px;
+  background: var(--cdx-sage-500);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+/* ---------- Form panel ---------- */
+.cdx-panel-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.cdx-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--cdx-card);
+  border: 1px solid var(--cdx-line);
+  border-radius: 14px;
+  padding: 2.25rem 2.25rem 1.9rem;
+  box-shadow: 0 24px 48px -28px rgba(13, 43, 43, 0.25);
+}
+
+.cdx-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cdx-sage-500);
+  margin: 0 0 0.4rem;
+}
+
+.cdx-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.55rem;
+  margin: 0 0 0.35rem;
+}
+
+.cdx-subtitle {
+  font-size: 0.88rem;
+  color: var(--cdx-ink-soft);
+  margin: 0 0 1.5rem;
+}
+
+.cdx-role-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  background: var(--cdx-bg);
+  padding: 0.3rem;
+  border-radius: 10px;
+  margin-bottom: 1.4rem;
+}
+
+.cdx-role-tab {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0.4rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cdx-ink-soft);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cdx-role-tab.is-active {
+  background: var(--cdx-teal-700);
+  color: #fff;
+}
+
+.cdx-field {
+  display: block;
+  margin-bottom: 1.05rem;
+}
+
+.cdx-field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--cdx-ink);
+}
+
+.cdx-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--cdx-line);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-family: "Inter", sans-serif;
+  color: var(--cdx-ink);
+  background: #fbfcfb;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cdx-field input:focus {
+  outline: none;
+  border-color: var(--cdx-teal-700);
+  box-shadow: 0 0 0 3px rgba(17, 75, 78, 0.13);
+}
+
+.cdx-password-wrap {
+  position: relative;
+}
+
+.cdx-password-wrap input {
+  padding-right: 3.4rem;
+}
+
+.cdx-password-toggle {
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--cdx-teal-700);
+  cursor: pointer;
+}
+
+.cdx-error {
+  background: var(--cdx-error-bg);
+  color: var(--cdx-error-ink);
+  font-size: 0.82rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.cdx-submit {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--cdx-teal-700);
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.cdx-submit:hover:not(:disabled) {
+  background: var(--cdx-teal-900);
+}
+
+.cdx-submit:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.cdx-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.cdx-forgot {
+  display: block;
+  text-align: center;
+  margin-top: 1.1rem;
+  font-size: 0.82rem;
+  color: var(--cdx-ink-soft);
+  text-decoration: none;
+}
+
+.cdx-forgot:hover {
+  color: var(--cdx-teal-700);
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px) {
+  .cdx-screen {
+    grid-template-columns: 1fr;
+  }
+  .cdx-panel-brand {
+    padding: 2.25rem 1.75rem;
+    gap: 1.5rem;
+  }
+  .cdx-brand-copy h1 {
+    font-size: 1.6rem;
+  }
+  .cdx-vitals {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdx-vitals-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
