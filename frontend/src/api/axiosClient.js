@@ -1,9 +1,15 @@
 // frontend/src/api/axiosClient.js
-import { authHeader } from "./auth";
+import { authHeader, getToken } from "./auth";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 async function request(path, { method = "GET", body, headers = {} } = {}) {
+  const token = getToken();
+  
+  // Log request for debugging
+  console.log(`Making ${method} request to ${path}`);
+  console.log(`Token present: ${Boolean(token)}`);
+  
   const res = await fetch(`${API_URL}${path}`, {
     method,
     headers: {
@@ -13,6 +19,9 @@ async function request(path, { method = "GET", body, headers = {} } = {}) {
     },
     body: body ? JSON.stringify(body) : undefined,
   });
+
+  // Log response status for debugging
+  console.log(`Response status: ${res.status}`);
 
   const data = await res.json().catch(() => ({}));
 

@@ -1,8 +1,6 @@
 from datetime import date
 
-from app.models.user import get_db_connection
-
-
+from models.user import get_db_connection
 def create_appointment(data: dict, created_by: int) -> int:
     conn = get_db_connection()
     cursor = conn.cursor()

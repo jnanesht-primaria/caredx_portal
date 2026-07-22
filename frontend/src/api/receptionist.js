@@ -1,69 +1,92 @@
 // frontend/src/api/receptionist.js
-import { authHeader } from "./auth";
+import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE = "http://localhost:5000/api/receptionist";
 
-function getAuthHeaders() {
+// FIX: Use consistent token key - match what's used in auth.js
+const getAuthHeader = () => {
+  // Try both possible token keys for compatibility
+  const token = localStorage.getItem("caredx_token") || localStorage.getItem("token");
   return {
-    "Content-Type": "application/json",
-    ...authHeader(),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
-}
+};
 
 export async function fetchDashboardStats(date) {
-  const res = await fetch(`${API_URL}/api/receptionist/stats?date=${date}`, {
-    headers: getAuthHeaders(),
-  });
-  if (!res.ok) throw res;
-  return res.json();
+  try {
+    const res = await axios.get(`${API_BASE}/stats?date=${date}`, getAuthHeader());
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching dashboard stats:", error);
+    throw error;
+  }
 }
 
-export async function fetchAppointments(params = {}) {
-  const query = new URLSearchParams(params).toString();
-  const res = await fetch(`${API_URL}/api/receptionist/appointments?${query}`, {
-    headers: getAuthHeaders(),
-  });
-  if (!res.ok) throw res;
-  return res.json();
+export async function fetchAppointments({ date, status, search }) {
+  try {
+    let url = `${API_BASE}/appointments?date=${date}`;
+    if (status) url += `&status=${encodeURIComponent(status)}`;
+    if (search) url += `&search=${encodeURIComponent(search)}`;
+
+    const res = await axios.get(url, getAuthHeader());
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    throw error;
+  }
 }
 
 export async function updateAppointmentStatus(appointmentId, status) {
-  const res = await fetch(`${API_URL}/api/receptionist/appointments/${appointmentId}/status`, {
-    method: "PATCH",
-    headers: getAuthHeaders(),
-    body: JSON.stringify({ status }),
-  });
-  if (!res.ok) throw res;
-  return res.json();
+  try {
+    const res = await axios.patch(
+      `${API_BASE}/appointments/${appointmentId}/status`,
+      { status },
+      getAuthHeader()
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Error updating appointment status:", error);
+    throw error;
+  }
 }
 
 export async function registerPatient(patientData) {
-  const res = await fetch(`${API_URL}/api/receptionist/patients`, {
-    method: "POST",
-    headers: getAuthHeaders(),
-    body: JSON.stringify(patientData),
-  });
-  if (!res.ok) throw res;
-  return res.json();
-}
-
-export async function searchPatients(query) {
-  const res = await fetch(
-    `${API_URL}/api/receptionist/patients/search?q=${encodeURIComponent(query)}`,
-    {
-      headers: getAuthHeaders(),
-    }
-  );
-  if (!res.ok) throw res;
-  return res.json();
+  try {
+    const res = await axios.post(`${API_BASE}/patients`, patientData, getAuthHeader());
+    return res.data;
+  } catch (error) {
+    console.error("Error registering patient:", error);
+    throw error;
+  }
 }
 
 export async function bookAppointment(appointmentData) {
-  const res = await fetch(`${API_URL}/api/receptionist/appointments`, {
-    method: "POST",
-    headers: getAuthHeaders(),
-    body: JSON.stringify(appointmentData),
-  });
-  if (!res.ok) throw res;
-  return res.json();
+  try {
+    const res = await axios.post(`${API_BASE}/appointments`, appointmentData, getAuthHeader());
+    return res.data;
+  } catch (error) {
+    console.error("Error booking appointment:", error);
+    throw error;
+  }
+}
+
+export async function searchPatients(query = "") {
+  try {
+    const res = await axios.get(
+      `${API_BASE}/patients/search?query=${encodeURIComponent(query)}`,
+      getAuthHeader()
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Error searching patients:", error);
+    throw error;
+  }
+}
+
+// Add a helper to check if user is authenticated
+export function isAuthenticated() {
+  const token = localStorage.getItem("caredx_token") || localStorage.getItem("token");
+  return Boolean(token);
 }
